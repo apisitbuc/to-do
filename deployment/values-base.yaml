@@ -1,0 +1,61 @@
+kind: Deployment
+replicaCount: 1
+image:
+  pullPolicy: Always
+imagePullSecrets:
+  name: telregistry
+terminationGracePeriodSeconds: 60
+containerPorts:
+  - containerPort: 80
+    protocol: TCP
+env:
+  - name: SERVER_ENABLED
+    value: true
+  - name: SERVER_HOSTNAME
+    value: 0.0.0.0
+  - name: SERVER_PORT
+    value: 80
+  - name: MONGO_DATABASE_NAME
+    value:
+  - name: MONGO_URI
+    secret:
+      name: mongodb
+      key: MONGO_URI
+  - name: MONGO_USERNAME
+    secret:
+      name: mongodb
+      key: MONGO_USERNAME
+  - name: MONGO_PASSWORD
+    secret:
+      name: mongodb
+      key: MONGO_PASSWORD
+healthCheck:
+  enabled: true
+  readinessProbe:
+    httpGet:
+      path: /system/health
+      port: 80
+      initialDelaySeconds: 5
+      timeoutSeconds: 1
+      periodSeconds: 30
+      successThreshold: 1
+      failureThreshold: 3
+  livenessProbe:
+    httpGet:
+      path: /system/health
+      port: 80
+    initialDelaySeconds: 300
+    timeoutSeconds: 10
+    periodSeconds: 60
+    successThreshold: 1
+    failureThreshold: 3
+services:
+  - type: ClusterIP
+    ports:
+      - name: http
+        protocol: TCP
+        port: 80
+        targetPort: 80
+serviceHostNetwork:
+  enabled: false
+nodeSelectorOverride: true

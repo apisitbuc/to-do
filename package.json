@@ -1,0 +1,51 @@
+{
+  "name": "tel-typescript-boilerplate",
+  "description": "",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">= 12.14.0"
+  },
+  "dependencies": {
+    "@koa/cors": "^3.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-compress": "^3.0.0",
+    "koa-router": "^8.0.8",
+    "node-graceful-shutdown": "^1.0.3",
+    "nodemon": "^2.0.15",
+    "reflect-metadata": "^0.1.13",
+    "routing-controllers": "^0.9.0-alpha.6",
+    "ts-node": "^9.0.0",
+    "tslib": "^2.0.3",
+    "typedi": "^0.8.0"
+  },
+  "devDependencies": {
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-compress": "^4.0.1",
+    "@types/koa-router": "^7.4.0",
+    "@types/koa__cors": "^3.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/parser": "^4.31.1",
+    "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.0.5"
+  },
+  "scripts": {
+    "clean": "rimraf coverage build tmp",
+    "build": "tsc -p tsconfig.release.json",
+    "postbuild": "cpy '*/**' '!**/*.ts' '../build/' --cwd=src/ --parents",
+    "lint": "eslint 'src/**/*.ts'",
+    "prettier:format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "start": "node build/index.js",
+    "dev": "nodemon"
+  },
+  "author": "True E-Logistics",
+  "license": "Apache-2.0"
+}
