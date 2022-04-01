@@ -1,5 +1,3 @@
-/*eslint no-useless-catch: "error"*/
-
 import { Service } from 'typedi';
 import { NotFound, ValidateError } from '../../errors/errors';
 import { UserRepository } from '../../repositories/user.repository';
