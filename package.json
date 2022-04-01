@@ -17,6 +17,7 @@
     "nodemon": "^2.0.15",
     "reflect-metadata": "^0.1.13",
     "routing-controllers": "^0.9.0-alpha.6",
+    "string-format": "^2.0.0",
     "ts-node": "^9.0.0",
     "tslib": "^2.0.3",
     "typedi": "^0.8.0"
@@ -26,6 +27,7 @@
     "@types/koa-compress": "^4.0.1",
     "@types/koa-router": "^7.4.0",
     "@types/koa__cors": "^3.0.1",
+    "@types/string-format": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
     "eslint": "^7.12.1",

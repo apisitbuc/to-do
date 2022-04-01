@@ -41,7 +41,6 @@ export class RestApiServer {
       controllers: [__dirname + '/controllers/**/!(*.test.*)'], // load any files excluding test files
     };
 
-    // business logic endpoints
     useKoaServer(this.app, routerControllerOptions);
   }
 

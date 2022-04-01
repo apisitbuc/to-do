@@ -1,23 +1,21 @@
-export class ValidateFieldError extends Error {
-  constructor(message: string) {
+export class CustomError extends Error {
+  constructor(
+    message: string,
+    public code?: string,
+    public errors?: any,
+    public title?: string,
+    public data?: any,
+  ) {
     super(message);
   }
 }
 
-export class NotFound extends Error {
-  constructor(message: string) {
-    super(message);
-  }
-}
+export class NotFound extends CustomError {}
 
-export class AlreadyExists extends Error {
-  constructor(message: string) {
-    super(message);
-  }
-}
+export class ValidateError extends CustomError {}
 
-export class RequestError extends Error {
-  constructor(message: string) {
-    super(message);
-  }
-}
+export class CustomBadRequest extends CustomError {}
+
+export class ValidateFieldError extends CustomError {}
+
+export class UnAuthorizedError extends CustomError {}
